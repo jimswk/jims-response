@@ -278,7 +278,7 @@
       };
 
       if (Object.values(data).slice(0, -1).every(val => val)) {
-        fetch('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL', {
+        fetch('https://script.google.com/macros/s/AKfycbwsMEg8g7VjGWiuh3y6VoEyYnI8zM80NGt5GinjQtwmM1cpVqTMrthsrHc6WCZ83Uq6/exec', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ functionName: 'saveFeedback', data: data }),
