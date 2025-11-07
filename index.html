@@ -1,114 +1,28 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JIMs e-Arkib</title>
+  <title>e-Maklum Balas Pelanggan</title>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #f0f0f0;
-    }
-    iframe {
-      display: block;
-      width: 100%;
-      height: 100vh;
-      border: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-    .fullscreen-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-      display: none; /* Sembunyikan butang secara lalai */
-    }
-    .fullscreen-button.visible {
-      display: block;
-    }
-    @media screen and (max-width: 600px) {
-      iframe {
-        height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-      }
-      .fullscreen-button {
-        bottom: calc(20px + env(safe-area-inset-bottom));
-        padding: 8px 16px;
-        font-size: 14px;
-      }
-    }
-  </style>
 </head>
 <body>
   <iframe 
-    src="https://script.google.com/macros/s/AKfycbzF636b2SzFFTHkq9oVttp5YGtGkMxiBws9AZb7hFV0GL223OYuJyD5E1dUA_mrBlPo/exec"
-    allowfullscreen="true">
+    src="https://script.google.com/macros/s/AKfycbyQe2Ua8yY6dQMrlDMFM8Ru9rC9cWSc06zns_lKjr3Ab6qpg2wVPODObCgYkeK9kPuD/exec"
+    width="100%"
+    height="100vh"
+    allowfullscreen="true"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; border: none;">
   </iframe>
-  <button class="fullscreen-button" onclick="toggleFullscreen()">Skrin Penuh</button>
 
   <script>
-    function toggleFullscreen() {
-      const iframe = document.querySelector('iframe');
-      if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-        // Cuba masuk mod skrin penuh
-        if (iframe.requestFullscreen) {
-          iframe.requestFullscreen().catch(err => {
-            console.error('Error attempting to enable full-screen mode:', err.message);
-          });
-        } else if (iframe.webkitRequestFullscreen) { // Safari
-          iframe.webkitRequestFullscreen().catch(err => {
-            console.error('Error attempting to enable full-screen mode:', err.message);
-          });
-        } else if (iframe.msRequestFullscreen) { // IE/Edge lama
-          iframe.msRequestFullscreen().catch(err => {
-            console.error('Error attempting to enable full-screen mode:', err.message);
-          });
-        }
-      } else {
-        // Keluar dari mod skrin penuh
-        if (document.exitFullscreen) {
-          document.exitFullscreen().catch(err => {
-            console.error('Error attempting to exit full-screen mode:', err.message);
-          });
-        } else if (document.webkitExitFullscreen) { // Safari
-          document.webkitExitFullscreen().catch(err => {
-            console.error('Error attempting to exit full-screen mode:', err.message);
-          });
-        } else if (document.msExitFullscreen) { // IE/Edge lama
-          document.msExitFullscreen().catch(err => {
-            console.error('Error attempting to exit full-screen mode:', err.message);
-          });
-        }
-      }
-    }
-
     window.onload = function() {
-      const fullscreenButton = document.querySelector('.fullscreen-button');
-      // Periksa sama ada mod skrin penuh disokong
-      if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled) {
-        fullscreenButton.classList.add('visible');
-      }
+      document.querySelector('iframe')
+        .requestFullscreen()
+        .catch((err) => {
+          console.error('Error attempting to enable full-screen mode:', err.message);
+        });
     };
   </script>
 </body>
