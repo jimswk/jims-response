@@ -10,22 +10,25 @@
   <link rel="manifest" href="site.webmanifest">
   
   <style>
-    /* Reset margin dan padding untuk memastikan iFrame mengisi keseluruhan skrin */
+    /* 1. Alih keluar 'overflow: hidden' dan gunakan 'min-height' pada body */
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Elakkan scroll bar berganda */
-      height: 100vh;
+      /* Memastikan body sekurang-kurangnya setinggi skrin */
+      min-height: 100vh; 
       width: 100vw;
+      /* Memberi padding tambahan pada bahagian bawah body untuk ruang scroll*/
+      padding-bottom: 50px; /* Boleh ubah nilai ini (cth: 50px) */
     }
     
-    /* Gaya untuk iFrame, memastikan ia meliputi keseluruhan ruang pandangan */
+    /* 2. iFrame tidak lagi fixed dan akan mengikut aliran dokumen (document flow) */
     .mobile-fullscreen-iframe {
-      position: fixed;
+      position: absolute; /* Tukar daripada 'fixed' kepada 'absolute' */
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh; /* Menggunakan 100vh untuk menyesuaikan ketinggian peranti */
+      /* iFrame mesti setinggi 100% daripada ketinggian body (100vh + padding) */
+      height: 100%; 
       border: none;
     }
   </style>
@@ -37,5 +40,5 @@
     allowfullscreen="true">
   </iframe>
 
-  </body>
+</body>
 </html>
