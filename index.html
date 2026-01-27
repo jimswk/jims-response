@@ -20,24 +20,11 @@
       /* Memberi padding tambahan pada bahagian bawah body untuk ruang scroll*/
       padding-bottom: 50px; /* Boleh ubah nilai ini (cth: 50px) */
     }
-    
-    /* 2. iFrame tidak lagi fixed dan akan mengikut aliran dokumen (document flow) */
-    .mobile-fullscreen-iframe {
-      position: absolute; /* Tukar daripada 'fixed' kepada 'absolute' */
-      top: 0;
-      left: 0;
-      width: 100%;
-      /* iFrame mesti setinggi 100% daripada ketinggian body (100vh + padding) */
-      height: 100%; 
-      border: none;
-    }
   </style>
 </head>
 <body>
-  <iframe 
+  <iframe >
     src="https://script.google.com/macros/s/AKfycbwWogMjN1Puyoa2F6ckmRfopl79W_qjudRAwWPZoTvYjCbEPXX1KAMi3BRVBNDeIv5D9g/exec"
-    class="mobile-fullscreen-iframe"
-    allowfullscreen="true">
   </iframe>
 
 </body>
