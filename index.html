@@ -10,84 +10,35 @@
   <link rel="manifest" href="site.webmanifest">
   
   <style>
-    /* Reset */
-    * {
+    /* 1. Alih keluar 'overflow: hidden' dan gunakan 'min-height' pada body */
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      /* Memastikan body sekurang-kurangnya setinggi skrin */
+      min-height: 100vh; 
+      width: 100vw;
+      /* Memberi padding tambahan pada bahagian bawah body untuk ruang scroll*/
+      padding-bottom: 50px; /* Boleh ubah nilai ini (cth: 50px) */
     }
     
-    body {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    /* Container untuk iframe */
-    .iframe-wrapper {
+    /* 2. iFrame tidak lagi fixed dan akan mengikut aliran dokumen (document flow) */
+    .mobile-fullscreen-iframe {
+      position: absolute; /* Tukar daripada 'fixed' kepada 'absolute' */
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: 900px;
-      height: calc(100vh - 100px); /* Tidak fullscreen, ada ruang */
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      border: 3px solid white;
-    }
-    
-    /* iFrame */
-    .survey-frame {
-      width: 100%;
-      height: 100%;
+      /* iFrame mesti setinggi 100% daripada ketinggian body (100vh + padding) */
+      height: 100%; 
       border: none;
-      display: block;
-    }
-    
-    /* Info kecil di bawah */
-    .info-text {
-      margin-top: 15px;
-      text-align: center;
-      color: #4a5568;
-      font-size: 0.8rem;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-      
-      .iframe-wrapper {
-        height: calc(100vh - 80px);
-      }
-    }
-    
-    @media (max-width: 480px) {
-      body {
-        padding: 5px;
-      }
-      
-      .iframe-wrapper {
-        height: calc(100vh - 60px);
-        border-radius: 8px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="iframe-wrapper">
-    <iframe 
-      src="https://script.google.com/macros/s/AKfycbzz_21xmCJDByVaZfiqb3ss-FsuDkw1zgSoCiGd-nCYz-dGC8xQxDeMrVdxkY4-kr7A/exec"
-      class="survey-frame"
-      title="Borang Maklum Balas Pelanggan"
-      allowfullscreen="true">
-    </iframe>
-  </div>
-  
-  <p class="info-text">Borang Soal Selidik - Jabatan Imigresen Malaysia Sarawak</p>
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbwWogMjN1Puyoa2F6ckmRfopl79W_qjudRAwWPZoTvYjCbEPXX1KAMi3BRVBNDeIv5D9g/exec"
+    class="mobile-fullscreen-iframe"
+    allowfullscreen="true">
+  </iframe>
+
 </body>
 </html>
